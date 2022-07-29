@@ -1,35 +1,35 @@
-Docker PHP-fpm e NGINX
+Docker PHP-fpm and NGINX
 ------------
-Repositório para guardar imagem docker com php-fpm e server nginx para projetos em php (Laravel etc).
+Repository to save docker image with php-fpm and nginx server for php projects (Laravel etc).
 
-Requisitos
+Requirements
 ------------
  - [docker](https://docs.docker.com/get-docker/) e [docker-compose](https://docs.docker.com/compose/)
 
- Instalação
+ Installation
 ------------
 
-**-> Clone o repositório**
+**1. Clone the repository**
 ```sh
 git clone https://github.com/matheusdearaujo/docker-php-nginx.git
 ```
 
-**-> Entre na pasta do repositório**
+**2. Change directory**
 
 ```sh
 cd docker-php-nginx
 ```
 
-**-> Cole seu projeto na raiz do repositório**
+**3. Paste your project in root**
 
-**-> Rode o docker**
-- Com o Makefile
+**4. Run docker**
+- With Makefile
 
 ```sh
  make run
 ```
-- Manualmente
+- Manually
 ```sh
  docker-compose up -d --build
- docker exec -it <NOME DO PROJETO> composer install
+ docker exec -it <PROJECT NAME> composer install
 ```
