@@ -4,7 +4,7 @@ Repository to save docker image with php-fpm and nginx server for php projects (
 
 Requirements
 ------------
- - [docker](https://docs.docker.com/get-docker/) e [docker-compose](https://docs.docker.com/compose/)
+ - [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/)
 
  Installation
 ------------
