@@ -1,21 +1,43 @@
 version: '3.8'
 
 services:
-    webserver:
-        image: 'nginx:alpine'
-        container_name: projeto-nginx
+    project-nginx:
+        image: nginx:alpine
+        container_name: project-nginx
         working_dir: /app
         volumes:
-            - './:/app'
-            - './.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+            - ./:/app
+            - ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
         ports:
-            - '9090:80'
+            - 9090:80
+        networks:
+            - projectnet
 
-    php-fpm:
+    project-php:
         build: .docker/php-fpm
-        container_name: projeto-php
+        container_name: project-php
         working_dir: /app
         expose:
             - 9000
         volumes:
-            - './:/app'
+            - ./:/app
+        networks:
+            - projectnet
+
+    project-mysql:
+        image: mysql:5.7
+        container_name: project-mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: project_db
+            MYSQL_USER: projectdb
+            MYSQL_PASSWORD: projectdb
+        ports:
+            - 3232:3306
+        networks:
+            - projectnet
+
+networks:
+  projectnet:
+      driver: bridge
